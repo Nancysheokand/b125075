@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Duration {
+    int hours, minutes;
+
+public:
+    Duration(int h = 0, int m = 0) {
+        hours = h + m / 60;
+        minutes = m % 60;
+    }
+
+    Duration operator+(Duration d) {
+        
+        return Duration(hours + d.hours,minutes + d.minutes);
+    }
+
+    void display() const {
+        cout << hours << " hours "
+             << minutes << " minutes";
+    }
+};
+
+int main() {
+    Duration d1(2, 45), d2(1, 30);
+
+    cout << "First duration: ";
+    d1.display();
+
+    cout << "\nSecond duration: ";
+    d2.display();
+
+    Duration result = d1 + d2;
+
+    cout << "\nTotal duration: ";
+    result.display();
+
+    cout << endl;
+    return 0;
+}
